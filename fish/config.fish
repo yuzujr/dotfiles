@@ -10,7 +10,7 @@ if status is-interactive
     # Alias
     alias vim="nvim"
     alias cls="clear && printf '\e[3J'"
-    alias fast="fastfetch --config examples/13.jsonc --logo /home/yuzujr/Pictures/fedora.png"
+    alias fast="fastfetch --config ~/.config/fastfetch/default.jsonc"
     alias ls="eza --icons -F -H --group-directories-first --git -1"
     alias ll="eza --icons -F -H --group-directories-first --git -1 -l"
     alias l="eza --icons -F -H --group-directories-first --git -1 -l"
