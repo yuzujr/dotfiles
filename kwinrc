@@ -9,6 +9,9 @@ Rows=1
 [Effect-slide]
 HorizontalGap=0
 
+[Effect-translucency]
+MoveResize=100
+
 [Plugins]
 fadingpopupsEnabled=false
 magiclampEnabled=true

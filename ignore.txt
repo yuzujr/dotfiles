@@ -1,0 +1,8 @@
+# ignore.txt
+# must be an empty line in the END!
+README.md
+linkmap.txt
+ignore.txt
+.git
+install.sh
+uninstall.sh
