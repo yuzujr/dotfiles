@@ -4,9 +4,14 @@ KDE + Hyprland personal dotfiles.
 
 **kde theme**: `Kvantum` + `Layan`
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4be2205c-5b19-484f-bd9d-b86eee766e34" />
+
+
+---
 **hyprland**:
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/46ebcb65-8274-4bdc-8c6d-375eafb7ef5a" />
 
 
+---
 ```bash
 .
 ├── autostart
