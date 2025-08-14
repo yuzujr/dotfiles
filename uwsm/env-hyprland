@@ -1,8 +1,13 @@
-export AQ_DRM_DEVICES="/dev/dri/card0"
+# 显卡优先级
+export AQ_DRM_DEVICES="/dev/dri/card0:/dev/dri/card1"
 # 设置输入法框架
 export QT_IM_MODULE=fcitx
-export XMODIFIERS="@im=fcitx"
-
-# 确保 fcitx5 正常工作
 export SDL_IM_MODULE=fcitx
 export GLFW_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+# 光标
+export XCURSOR_SIZE=24
+export HYPRCURSOR_SIZE=24
+export XCURSOR_THEME=Bibata-Modern-Ice
+# hyprshot存储位置
+export HYPRSHOT_DIR=~/Pictures/screenshots

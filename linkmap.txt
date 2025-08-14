@@ -1,3 +1,4 @@
 # linkmap.txt
 # must be an empty line in the END!
 konsole   ~/.local/share
+.makepkg.conf   ~
