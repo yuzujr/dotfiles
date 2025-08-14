@@ -1,4 +1,11 @@
 # linkmap.txt
 # must be an empty line in the END!
+
+# dir
 konsole   ~/.local/share
+
+# file
 .makepkg.conf   ~
+kde_settings.conf /etc/sddm.conf.d
+Xsetup /usr/share/sddm/scripts
+

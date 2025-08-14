@@ -171,11 +171,11 @@ done < <(find "$SRC_ROOT" -mindepth 1 -maxdepth 1 -type f -print0)
 
 if (( ${#SKIPPED_LIST[@]} > 0 )); then
   echo
-  echo "The following items were skipped because destination exists and differs:"
+  echo "Warning: The following items were skipped because destination exists and differs:"
   for item in "${SKIPPED_LIST[@]}"; do
-    echo "  $item"
+    echo "  -  $item"
   done
-  echo
   echo "If you want to replace them, remove the above items and re-run ./install.sh"
+  echo
 fi
 echo "Done."
