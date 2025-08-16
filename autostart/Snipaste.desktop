@@ -1,11 +1,10 @@
 [Desktop Entry]
 Type=Application
 Name=Snipaste
-Icon=Snipaste
+Icon=/home/yuzujr/Software/snipaste/logo.png
 Exec="/home/yuzujr/Software/snipaste/Snipaste-2.10.8-x86_64.AppImage"
 Terminal=false
 Hidden=false
-# 仅在 KDE/Plasma 中自启动
 OnlyShowIn=KDE;
 X-GNOME-Autostart-enabled=true
 X-GNOME-Autostart-Delay=3
