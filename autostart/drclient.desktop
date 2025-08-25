@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=drclient_jlu
+Comment=Command-line Network Connection Tool
+Exec=/usr/local/bin/drclient_jlu
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=Network;Utility;
