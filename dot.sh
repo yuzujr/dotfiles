@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-REPO="${REPO:-$SCRIPT_DIR}"
+SOURCE_DIR="${SOURCE_DIR:-${REPO:-$PWD}}"
 DOT_REPOS="${DOT_REPOS:-}"
-DOT_REPOS_FILE="${DOT_REPOS_FILE:-$SCRIPT_DIR/.dot.sh.repos}"
+DOT_REPOS_FILE="${DOT_REPOS_FILE:-$PWD/.dot.sh.repos}"
 
 trim() {
   local s="$1"
@@ -37,6 +36,32 @@ source_has_files() {
   local src="$1"
   [[ -d "$src" ]] || return 1
   find "$src" -mindepth 1 \( -type f -o -type l \) -print -quit | grep -q .
+}
+
+print_home_target() {
+  local src="$1"
+  if [[ ! -d "$src" ]]; then
+    echo "  home: missing ($src)"
+    return 0
+  fi
+  if source_has_files "$src"; then
+    echo "  home: $src -> \$HOME"
+  else
+    echo "  home: empty ($src, skip)"
+  fi
+}
+
+print_root_target() {
+  local src="$1"
+  if [[ ! -d "$src" ]]; then
+    echo "  root: missing ($src)"
+    return 0
+  fi
+  if source_has_files "$src"; then
+    echo "  root: $src -> /"
+  else
+    echo "  root: empty ($src, skip)"
+  fi
 }
 
 run_home_source() {
@@ -85,39 +110,22 @@ run_root_source() {
 
 show_targets() {
   local path="$1"
-  local spec="$2"
 
   if [[ ! -e "$path" ]]; then
-    echo "$spec"
+    echo "source: $path"
     echo "  missing: $path"
     return 0
   fi
 
   if [[ -d "$path/home" || -d "$path/root" ]]; then
-    echo "$spec"
-    if [[ -d "$path/home" ]]; then
-      if source_has_files "$path/home"; then
-        echo "  home: $path/home"
-      else
-        echo "  home: empty ($path/home, skip)"
-      fi
-    else
-      echo "  home: missing ($path/home)"
-    fi
-    if [[ -d "$path/root" ]]; then
-      if source_has_files "$path/root"; then
-        echo "  root: $path/root -> /"
-      else
-        echo "  root: empty ($path/root, skip)"
-      fi
-    else
-      echo "  root: missing ($path/root)"
-    fi
+    echo "source: $path"
+    print_home_target "$path/home"
+    print_root_target "$path/root"
     return 0
   fi
 
-  echo "$spec"
-  echo "  home: $path"
+  echo "source: $path"
+  print_home_target "$path"
 }
 
 run_source_spec() {
@@ -177,7 +185,7 @@ resolve_specs() {
   elif [[ -n "$DOT_REPOS" ]]; then
     IFS=':' read -r -a tmp <<<"$DOT_REPOS"
   else
-    tmp+=("home:$REPO/home")
+    tmp+=("$SOURCE_DIR")
 
     if [[ -f "$DOT_REPOS_FILE" ]]; then
       while IFS= read -r line || [[ -n "$line" ]]; do
@@ -217,13 +225,14 @@ source:
   root:/path/to/source   explicit / target (sudo)
 
 When [source ...] is omitted:
-  1) use home:$REPO/home (default: script directory)
+  1) use SOURCE_DIR (default: current directory)
   2) append each non-empty line from DOT_REPOS_FILE (if it exists)
 
 Env:
-  REPO=... default public repo path
-  DOT_REPOS=... colon-separated source list (overrides REPO + DOT_REPOS_FILE)
-  DOT_REPOS_FILE=... optional source list file (default: ./.dot.sh.repos)
+  SOURCE_DIR=... default source path (fallback: REPO, then current directory)
+  REPO=... alias of SOURCE_DIR for compatibility
+  DOT_REPOS=... colon-separated source list (overrides SOURCE_DIR + DOT_REPOS_FILE)
+  DOT_REPOS_FILE=... optional source list file (default: $PWD/.dot.sh.repos)
 EOF
 }
 
@@ -271,15 +280,15 @@ list)
     local_path="$(expand_home "$local_path")"
     case "$local_mode" in
     home)
-      echo "$spec"
-      echo "  home: $local_path"
+      echo "source: $local_path [home-only]"
+      print_home_target "$local_path"
       ;;
     root)
-      echo "$spec"
-      echo "  root: $local_path -> /"
+      echo "source: $local_path [root-only]"
+      print_root_target "$local_path"
       ;;
     auto)
-      show_targets "$local_path" "$spec"
+      show_targets "$local_path"
       ;;
     esac
     echo

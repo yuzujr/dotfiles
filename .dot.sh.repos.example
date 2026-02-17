@@ -1,2 +1,2 @@
-# local-only extra sources, applied after this public repo
+# local-only extra sources, applied after current directory
 ~/Templates/dotfiles-private
