@@ -1,0 +1,13 @@
+[Unit]
+Description=Fcitx5 input method framework
+PartOf=niri.service
+After=niri.service
+BindsTo=niri.service
+
+[Service]
+ExecStart=/usr/bin/fcitx5
+Restart=on-failure
+
+[Install]
+WantedBy=niri.service
+
