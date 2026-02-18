@@ -3,3 +3,6 @@ output "BOE NE160QDM-NZL Unknown" {
     scale 1.5
 	  position x=0 y=0
 }
+output "HDMI-A-1"{
+    off
+}

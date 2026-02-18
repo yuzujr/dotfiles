@@ -25,9 +25,6 @@ squashEnabled=false
 DelayTime=0
 HighlightWindows=false
 
-[Tiling]
-padding=4
-
 [Tiling][03f7cd35-711d-5678-b70e-6977ddc0ea71]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
@@ -74,6 +71,7 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][ec18b871-4b92-452a-a670-a3e913e02511][4c3832e2-02be-4231-8616-7d4d44394b89]
+padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][ec18b871-4b92-452a-a670-a3e913e02511][79e0a71a-5492-4f84-bc6e-dc8a204f1b7b]
