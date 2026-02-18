@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SOURCE_DIR="${SOURCE_DIR:-${REPO:-$PWD}}"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+SOURCE_DIR="${SOURCE_DIR:-${REPO:-$SCRIPT_DIR}}"
 DOT_REPOS="${DOT_REPOS:-}"
-DOT_REPOS_FILE="${DOT_REPOS_FILE:-$PWD/.dot.sh.repos}"
+DOT_REPOS_FILE="${DOT_REPOS_FILE:-$SCRIPT_DIR/.dot.sh.repos}"
 
 trim() {
   local s="$1"
@@ -225,14 +226,14 @@ source:
   root:/path/to/source   explicit / target (sudo)
 
 When [source ...] is omitted:
-  1) use SOURCE_DIR (default: current directory)
+  1) use SOURCE_DIR (default: script directory)
   2) append each non-empty line from DOT_REPOS_FILE (if it exists)
 
 Env:
-  SOURCE_DIR=... default source path (fallback: REPO, then current directory)
+  SOURCE_DIR=... default source path (fallback: REPO, then script directory)
   REPO=... alias of SOURCE_DIR for compatibility
   DOT_REPOS=... colon-separated source list (overrides SOURCE_DIR + DOT_REPOS_FILE)
-  DOT_REPOS_FILE=... optional source list file (default: $PWD/.dot.sh.repos)
+  DOT_REPOS_FILE=... optional source list file (default: <script-dir>/.dot.sh.repos)
 EOF
 }
 
