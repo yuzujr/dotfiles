@@ -4,20 +4,27 @@
 ;; Package System Bootstrap
 ;; ----------------------------
 (require 'package)
-(package-initialize)
+(unless (bound-and-true-p package--initialized)
+  (package-initialize))
 
-;; Refresh package contents if needed
+;; Refresh archives once when needed.
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; Bootstrap use-package
+;; Bootstrap use-package.
 (unless (package-installed-p 'use-package)
-  (package-refresh-contents)
   (package-install 'use-package))
-
 (require 'use-package)
-(require 'use-package-ensure)
 (setq use-package-always-ensure t)
+
+(use-package benchmark-init
+  :demand t
+  :init
+  ;; Start collecting as early as possible in init.
+  (benchmark-init/activate)
+  :hook
+  ;; Stop collecting after startup to avoid runtime overhead.
+  (after-init . benchmark-init/deactivate))
 
 ;; ----------------------------
 ;; Load Configuration Modules
@@ -35,6 +42,7 @@
 (require 'lsp)          ; Eglot (LSP client)
 (require 'programming)  ; Programming modes and tools
 (require 'tools)        ; Utility packages
+(require 'ai)           ; AI coding agent integration
 (require 'functions)    ; Custom functions
 
 ;; ----------------------------

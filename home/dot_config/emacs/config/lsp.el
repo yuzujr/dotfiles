@@ -7,13 +7,14 @@
 
 ;; Eglot expands LSP snippets through yasnippet.
 (use-package yasnippet
-  :init
-  (yas-global-mode 1)
+  :hook (prog-mode . yas-minor-mode)
   :bind (("C-c y e" . yas-expand)
          ("C-c y i" . yas-insert-snippet)
          ("C-c y v" . yas-visit-snippet-file)
          ("C-c y r" . yas-reload-all)
-         ("C-c y n" . yas-new-snippet)))
+         ("C-c y n" . yas-new-snippet))
+  :config
+  (yas-reload-all))
 
 (use-package yasnippet-snippets
   :after yasnippet)
@@ -38,8 +39,8 @@
          ("C-c d" . xref-find-definitions)
          ("C-c u" . xref-find-references)
          ("C-c r" . eglot-rename)
-         ("C-c n" . flymake-goto-next-error)
-         ("C-c j" . flymake-goto-prev-error)
+         ("C-c j" . flymake-goto-next-error)
+         ("C-c k" . flymake-goto-prev-error)
          ("C-c e" . eldoc-box-help-at-point)
          ("C-c l s" . eglot)
          ("C-c l c" . eglot-reconnect)
@@ -64,28 +65,6 @@
   (eldoc-box-cleanup-interval 1.0)
   (eldoc-box-max-pixel-width 1100)
   (eldoc-box-max-pixel-height 700))
-
-(defun rc/markdown-live-preview-temp-file (&rest _)
-  "Return a temporary HTML file path for markdown live preview."
-  (expand-file-name
-   (format "emacs-md-preview-%s.html"
-           (md5 (or buffer-file-name (buffer-name))))
-   temporary-file-directory))
-
-(use-package markdown-mode
-  :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . gfm-mode)
-         ("\\.markdown\\'" . gfm-mode))
-  :custom
-  (markdown-command "cmark-gfm")
-  (markdown-live-preview-window-function #'markdown-live-preview-window-eww)
-  (markdown-live-preview-delete-export 'delete-on-export)
-  :config
-  ;; Avoid exporting preview files beside the source markdown file.
-  (advice-remove 'markdown-live-preview-get-filename
-                 #'rc/markdown-live-preview-temp-file)
-  (advice-add 'markdown-live-preview-get-filename :override
-              #'rc/markdown-live-preview-temp-file))
 
 (with-eval-after-load 'which-key
   (which-key-add-key-based-replacements

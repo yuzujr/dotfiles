@@ -39,9 +39,9 @@
   :init
   (global-corfu-mode)
   :bind (:map corfu-map
+              ("RET" . nil)
+              ("<return>" . nil)
               ("TAB" . corfu-insert)
-              ("C-j" . corfu-next)
-              ("C-k" . corfu-previous)
               ("M-SPC" . corfu-insert-separator)
               ("M-d" . corfu-popupinfo-documentation)
               ("M-l" . corfu-popupinfo-location))
@@ -111,11 +111,9 @@
 (use-package consult
   :bind (;; Canonical keymap (no legacy compatibility bindings)
          ("C-c b" . consult-buffer)
-         ("C-c p" . consult-project-buffer)
          ("C-c f" . consult-find)
          ("C-c s" . consult-ripgrep)
          ("C-c /" . consult-line)
-         ("C-c i" . consult-imenu)
          ("C-c c g" . consult-goto-line)
          ("C-c c o" . consult-outline)
          ("C-c c e" . consult-compile-error)
@@ -127,7 +125,9 @@
          ("C-c c x" . consult-bookmark))
   :hook (completion-list-mode . consult-preview-at-point-mode)
   :custom
-  (consult-narrow-key "<"))
+  (consult-narrow-key "<")
+  ;; Avoid default `#` separator prompt in async commands.
+  (consult-async-split-style 'semicolon))
 
 ;; ----------------------------
 ;; Embark - Contextual Actions

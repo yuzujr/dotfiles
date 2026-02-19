@@ -26,7 +26,8 @@
 
 ;; Prevent unnecessary UI updates during startup
 (setq frame-inhibit-implied-resize t)
-(setq-default pgtk-wait-for-event-timeout 0)
+(when (boundp 'pgtk-wait-for-event-timeout)
+  (setq-default pgtk-wait-for-event-timeout 0))
 
 ;; ----------------------------
 ;; Package Management

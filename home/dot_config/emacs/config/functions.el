@@ -2,16 +2,16 @@
 (provide 'functions)
 
 (defun rc/duplicate-line ()
-  "Duplicate current line"
+  "Duplicate current line."
   (interactive)
-  (let ((column (- (point) (point-at-bol)))
-        (line (let ((s (thing-at-point 'line t)))
-                (if s (string-remove-suffix "\n" s) ""))))
-    (move-end-of-line 1)
+  (let ((column (current-column))
+        (line (buffer-substring-no-properties
+               (line-beginning-position)
+               (line-end-position))))
+    (end-of-line)
     (newline)
     (insert line)
-    (move-beginning-of-line 1)
-    (forward-char column)))
+    (move-to-column column)))
 
 (defconst rc/cheatsheet-file
   (expand-file-name "CHEATSHEET.md" user-emacs-directory)
