@@ -17,6 +17,12 @@
   :bind (("C-c v" . vterm-other-window)))
 
 ;; ----------------------------
+;; Sudo Edit - Edit as Root
+;; ----------------------------
+(use-package sudo-edit
+  :commands (sudo-edit sudo-edit-find-file))
+
+;; ----------------------------
 ;; File Tree - Treemacs
 ;; ----------------------------
 (defun rc/treemacs--workspace-names ()
@@ -126,6 +132,8 @@
          ("C-c p" . treemacs-add-project-to-workspace))
   :custom
   (treemacs-width 32)
+  (treemacs-width-is-initially-locked nil)
+  (treemacs-text-scale 0)
   (treemacs-follow-after-init t)
   :config
   ;; Disable git integration to avoid spawning python for status parsing.

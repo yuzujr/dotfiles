@@ -9,7 +9,7 @@
 (defvar font-family "Maple Mono NF CN"
   "Default font family.")
 
-(defvar font-height 140
+(defvar font-height 120
   "Default font height (1/10 pt).")
 
 (defvar font-weight 'regular

@@ -6,6 +6,7 @@ binds {
     Mod+B hotkey-overlay-title="浏览器（Chrome）" { spawn "google-chrome-stable"; }
     Alt+Shift+W hotkey-overlay-title="Coomer聚焦" { spawn "coomer" "--overlay" "--monitor" "all"; }
     Alt+Space hotkey-overlay-title="应用启动器" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    Super+Shift+XF86TouchpadOff hotkey-overlay-title="Microslop键的唯一用处" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
     Mod+Alt+V hotkey-overlay-title="剪贴板" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
 
     // #"截图与录屏"
@@ -20,8 +21,8 @@ binds {
     XF86AudioRaiseVolume allow-when-locked=true hotkey-overlay-title="音量提高" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
     XF86AudioMute allow-when-locked=true hotkey-overlay-title="静音输出" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
     XF86AudioMicMute allow-when-locked=true hotkey-overlay-title="静音麦克风" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
-    XF86MonBrightnessUp allow-when-locked=true hotkey-overlay-title="亮度提高" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-    XF86MonBrightnessDown allow-when-locked=true hotkey-overlay-title="亮度降低" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+    XF86MonBrightnessUp allow-when-locked=true hotkey-overlay-title="亮度提高" { spawn-sh "brightnessctl --device=amdgpu_bl2 set 5%+"; }
+    XF86MonBrightnessDown allow-when-locked=true hotkey-overlay-title="亮度降低" { spawn-sh "brightnessctl --device=amdgpu_bl2 set 5%-"; }
     Mod+Alt+L hotkey-overlay-title="锁屏" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
 
     // #"壁纸"

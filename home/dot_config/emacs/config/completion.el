@@ -8,9 +8,6 @@
 (use-package vertico
   :init
   (vertico-mode)
-  :bind (:map vertico-map
-              ("C-j" . vertico-next)
-              ("C-k" . vertico-previous))
   :custom
   (vertico-cycle t)
   (vertico-resize nil))
@@ -111,7 +108,8 @@
 (use-package consult
   :bind (;; Canonical keymap (no legacy compatibility bindings)
          ("C-c b" . consult-buffer)
-         ("C-c f" . consult-find)
+         ("C-c f" . consult-fd)
+         ("C-c F" . consult-locate)
          ("C-c s" . consult-ripgrep)
          ("C-c /" . consult-line)
          ("C-c c g" . consult-goto-line)
@@ -130,6 +128,19 @@
   (consult-async-split-style 'semicolon))
 
 ;; ----------------------------
+;; Consult-dir - Directory Sources for Minibuffer
+;; ----------------------------
+(use-package consult-dir
+  :after (consult vertico)
+  :bind (:map vertico-map
+         ("M-g" . consult-dir)))
+
+(with-eval-after-load 'which-key
+  (which-key-add-key-based-replacements
+    "C-c c i" "consult-dir"
+    "C-c c j" "consult-dir-file"))
+
+;; ----------------------------
 ;; Embark - Contextual Actions
 ;; ----------------------------
 (use-package embark
@@ -138,7 +149,10 @@
    ("C-;" . embark-dwim)
    ("C-h B" . embark-bindings))
   :custom
-  (prefix-help-command #'embark-prefix-help-command))
+  (prefix-help-command #'embark-prefix-help-command)
+  :config
+  ;; In Embark file actions, use `U` to open the target file via sudo-edit.
+  (keymap-set embark-file-map "U" #'sudo-edit-find-file))
 
 (use-package embark-consult
   :hook
