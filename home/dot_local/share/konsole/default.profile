@@ -1,5 +1,5 @@
 [Appearance]
-ColorScheme=One Dark
+ColorScheme=Solarized
 Font=Maple Mono NF CN,12,-1,5,400,1,0,0,0,0,0,0,0,0,0,1,Italic
 
 [General]

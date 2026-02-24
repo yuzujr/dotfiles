@@ -144,6 +144,7 @@
                         "filenamePattern": "recording_yyyyMMdd_HHmmss",
                         "frameRate": "60",
                         "hideInactive": false,
+                        "iconColor": "none",
                         "quality": "very_high",
                         "resolution": "original",
                         "showCursor": true,
@@ -238,7 +239,7 @@
         ]
     },
     "colorSchemes": {
-        "darkMode": false,
+        "darkMode": true,
         "generationMethod": "content",
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
@@ -607,7 +608,7 @@
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": false,
         "boxBorderEnabled": false,
-        "fontDefault": "Maple Mono NF CN",
+        "fontDefault": "Maple Mono NF CN Medium",
         "fontDefaultScale": 1,
         "fontFixed": "Maple Mono NF CN",
         "fontFixedScale": 1,
