@@ -24,6 +24,7 @@ binds {
     XF86MonBrightnessUp allow-when-locked=true hotkey-overlay-title="亮度提高" { spawn-sh "brightnessctl --device=amdgpu_bl2 set 5%+"; }
     XF86MonBrightnessDown allow-when-locked=true hotkey-overlay-title="亮度降低" { spawn-sh "brightnessctl --device=amdgpu_bl2 set 5%-"; }
     Mod+Alt+L hotkey-overlay-title="锁屏" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+    Mod+Alt+I hotkey-overlay-title="切换输入法主题预设" { spawn "/home/yuzujr/.local/bin/fcitx5-theme-toggle"; }
 
     // #"壁纸"
     Mod+Ctrl+W hotkey-overlay-title="打开壁纸选择" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; }
@@ -50,6 +51,10 @@ binds {
     Mod+Ctrl+L hotkey-overlay-title="列向右移动" { move-column-right; }
     Mod+Ctrl+J hotkey-overlay-title="窗口向下移动（或到下方工作区）" { move-window-down-or-to-workspace-down; }
     Mod+Ctrl+K hotkey-overlay-title="窗口向上移动（或到上方工作区）" { move-window-up-or-to-workspace-up; }
+    Mod+A hotkey-overlay-title="窗口向左移动" { consume-or-expel-window-left; }
+    Mod+D hotkey-overlay-title="窗口向右移动" { consume-or-expel-window-right; }
+    Mod+S hotkey-overlay-title="窗口向下移动" { move-window-down; }
+    Mod+W hotkey-overlay-title="窗口向上移动" { move-window-up; }
 
     // #"显示器焦点"
     Mod+Shift+H hotkey-overlay-title="焦点到左侧显示器" { focus-monitor-left; }
@@ -116,4 +121,3 @@ binds {
     Mod+Shift+Minus hotkey-overlay-title="窗口高度减少 5%" { set-window-height "-5%"; }
     Mod+Shift+Equal hotkey-overlay-title="窗口高度增加 5%" { set-window-height "+5%"; }
 }
-

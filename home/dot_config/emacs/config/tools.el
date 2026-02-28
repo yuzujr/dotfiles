@@ -162,7 +162,9 @@
          ("C->"         . mc/mark-next-like-this)
          ("C-<"         . mc/mark-previous-like-this)
          ("C-c C-<"     . mc/mark-all-dwim)
-         ("C-c C->"     . mc/mark-all-dwim)))
+         ("C-c C->"     . mc/mark-all-dwim))
+  :custom
+  (mc/always-run-for-all t))
 
 ;; Window management
 (use-package ace-window

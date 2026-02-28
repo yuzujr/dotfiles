@@ -76,5 +76,7 @@
 ;; ----------------------------
 ;; Use short answers (y/n instead of yes/no)
 (setq use-short-answers t)
+;; dired dwim
+(setq dired-dwim-target t)
 
 ;;; editor.el ends here

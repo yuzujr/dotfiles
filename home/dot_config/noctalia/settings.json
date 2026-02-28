@@ -14,7 +14,7 @@
         "enableWindowsSearch": false,
         "iconMode": "native",
         "ignoreMouseInput": false,
-        "overviewLayer": false,
+        "overviewLayer": true,
         "pinnedApps": [
         ],
         "position": "center",
@@ -327,6 +327,7 @@
         ],
         "onlySameOutput": true,
         "pinnedApps": [
+            "kitty"
         ],
         "pinnedStatic": false,
         "position": "bottom",
@@ -340,7 +341,7 @@
         "animationDisabled": true,
         "animationSpeed": 1,
         "autoStartAuth": false,
-        "avatarImage": "/home/yuzujr/Pictures/Beluga.jpg",
+        "avatarImage": "/home/yuzujr/Pictures/Beluga.webp",
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
         "clockStyle": "digital",
@@ -646,7 +647,7 @@
         "transitionType": "disc",
         "useSolidColor": false,
         "useWallhaven": false,
-        "viewMode": "browse",
+        "viewMode": "recursive",
         "wallhavenApiKey": "",
         "wallhavenCategories": "111",
         "wallhavenOrder": "desc",
