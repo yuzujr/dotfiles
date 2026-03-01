@@ -1,1 +1,1 @@
-feh -F
+feh --scale-down --geometry 1280x720

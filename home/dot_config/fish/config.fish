@@ -18,7 +18,9 @@ if status is-interactive
     alias cd="z"
     alias diff="delta"
     alias code="/usr/bin/code --ozone-platform-hint=auto &> /dev/null"
-    alias dot="~/Templates/dotfiles/dot.sh"
+    alias dot="chezmoi -S ~/Templates/dotfiles/home"
+    alias dotp="chezmoi -S ~/Templates/dotfiles-private/home"
+    alias dotpr="sudo chezmoi -S ~/Templates/dotfiles-private/root -D /"
 
     # Functions
     function y

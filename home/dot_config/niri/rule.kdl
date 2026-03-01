@@ -16,11 +16,12 @@ window-rule {
 window-rule {
     match app-id="SPlayer"
     match app-id="google-chrome"
+    match app-id="feh"
+    match app-id="mpv"
     match title="图片查看器"
     match title="画中画"
     match title="图片和视频"
     match title="视频播放器"
-    match app-id="mpv"
     opacity 1.0
 }
 
