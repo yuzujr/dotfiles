@@ -2,6 +2,8 @@
 
 Personal dotfiles for Niri and KDE Plasma, managed by [chezmoi](https://github.com/twpayne/chezmoi).
 
+Deprecated, now using [NixOS](https://github.com/yuzujr/nixos-config).
+
 ## Quick Start
 
 ```bash
